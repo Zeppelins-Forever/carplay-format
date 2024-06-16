@@ -28,7 +28,7 @@ if [ $chapter_marks == "N" ] || [ $chapter_marks == "n" ]; then
     ffmpeg -hide_banner -i $audio_no_extension-noMdata.mp3 -f segment -segment_time 600 -c copy $audio_no_extension/$audio_no_extension--%03d.mp3
     rm $audio_no_extension-noMdata.mp3
 else
-    python3 split_ffmpeg-DEFINITIVE.py $audiobook
+    python3 split_ffmpeg.py $audiobook
     cd $audio_no_extension
     for i in *.mp3; do
         ffmpeg -hide_banner -i "$i" -map_metadata -1 -c:v copy -c:a copy "temp-$i"
